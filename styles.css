@@ -1,0 +1,459 @@
+/* Global reset & font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  scroll-behavior: smooth;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  background-color: #ffffff;
+  color: #111;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 1000;
+  padding: 0.8rem 2rem;
+  transition: background-color 0.3s ease;
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Menu items */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links li a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: #007aff;
+}
+
+/* Hero Section */
+.hero-section {
+  height: 100vh;
+  background-image: url('images/png/home.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed; /* 🔥 关键，让背景固定，实现慢滚效果 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-top: 80px;
+  text-align: center;
+}
+
+.hero-section .overlay {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  text-align: center;
+  animation: fadeIn 2s ease;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-title .subtitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title .maintitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+/* Section content */
+.content-section {
+  padding: 6rem 2rem 4rem;
+  max-width: 900px;
+  margin: 0 auto;
+  border-bottom: 1px solid #eee;
+}
+
+.content-section h2 {
+  font-size: 2rem;
+  font-weight: 1000;
+  margin-bottom: 2rem;
+  color: #000;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* About Gallery Styles */
+.about-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+  margin-top: 1rem;
+}
+
+.about-item {
+  text-align: center;
+}
+
+.about-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.caption {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #444;
+  font-weight: 600;
+}
+
+.quote-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  max-width: 1100px;
+  margin: 0 auto 6rem;
+  padding: 1rem;
+  flex-wrap: nowrap;
+}
+
+.quote-container {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote-image {
+  flex: 0 0 280px;
+  max-width: 100%;
+  border-radius: 1px;
+  object-fit: cover;
+  margin-right: 30px;
+}
+
+.quote-text {
+  flex: 1;
+  min-width: 600px;
+}
+
+.quote-line {
+  font-size: 1.5rem;
+  font-weight: 00;
+  line-height: 1.6;
+  color: #111;
+  margin-bottom: 1rem;
+}
+
+.quote-source {
+  font-size: 0.9rem;
+  color: #777;
+  font-style: italic;
+}
+
+.quote-under-about {
+  margin-top: 4rem;
+}
+
+.quote-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: -1rem;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.quote-image {
+  width: 260px;
+  max-width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.quote-text {
+  max-width: 600px;
+}
+
+.quote-line {
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1.6;
+  color: #111;
+  margin-bottom: 1.5rem;
+}
+
+.quote-source {
+  font-size: 0.9rem;
+  color: #777;
+  font-style: italic;
+}
+
+.fun-facts {
+  margin-top: 3rem;
+  padding: 1rem 0;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fun-facts h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.fun-facts-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.8;
+}
+
+.fun-facts-list li {
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.fun-facts-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #007aff;
+  font-weight: bold;
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 4rem auto;
+  max-width: 900px;
+}
+
+@media (min-width: 768px) {
+  .quote-row {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+}
+
+.reading-goals-header {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: 2rem auto;
+  border-radius: 8px;
+}
+
+.goals-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.goal-card {
+  flex: 1 1 250px;
+  max-width: 400px;
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.goal-card h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.goal-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+body {
+  cursor: url('./images/png/pointer.png'), auto;
+}
+
+a {
+  cursor: url('images/png/hand.png'), pointer;
+}
+
+.hero-title .maintitle:hover {
+  color: #007aff;
+  cursor: default;
+}
+
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  margin-top: 2rem;
+}
+
+.book-card {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.book-card img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.book-card h4 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  color: #000;
+}
+
+.book-card p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.book-subheading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+  color: #000;
+}
+
+.review-text h4 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+
+.review-author {
+  font-size: 0.95rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+
+.review-rating {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.book-review {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+@media (min-width: 900px) {
+  .book-review {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+}
+
+.review-image {
+  width: 250px;
+  height: 80%;
+  border-radius: 12px;
+  object-fit: contain;
+  height: auto;
+  display: block;
+  flex: 1;
+  margin-top: 5rem;
+}
+
+.review-text {
+  text-align: left;
+  width: 450px;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  margin-top: 4rem;
+}
+
+.review-text em {
+  font-style: normal;
+}
