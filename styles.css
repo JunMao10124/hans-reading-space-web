@@ -351,14 +351,13 @@ body {
 }
 
 a {
-  cursor: url('images/png/hand.png'), pointer;
+  cursor: url('images/png/pointer-hand.png'), pointer;
 }
 
 .hero-title .maintitle:hover {
   color: #007aff;
   cursor: default;
 }
-
 
 .book-grid {
   display: grid;
@@ -571,4 +570,86 @@ a {
 .text-section p {
     margin-bottom: 1rem;
     font-size: 1rem;
+}
+
+.shades-review {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+@media (min-width: 900px) {
+    .shades-review {
+        grid-template-columns: 1fr 1.4fr;
+    }
+}
+
+.shades-image {
+    width: 400px;
+    height: auto;
+    border-radius: 12px;
+    object-fit: contain;
+    display: block;
+}
+
+.shades-text {
+    text-align: left;
+}
+
+.shades-text h4 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 0.5rem;
+}
+
+.shades-text p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    max-width: 800px;
+}
+
+.shades-extra {
+    max-width: 900px;
+    margin: 2rem auto 0;
+    padding: 1rem;
+    text-align: left;
+}
+
+.shades-extra h4 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    color: #111;
+}
+
+.shades-extra p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.8;
+}
+
+.shades-topic {
+    max-width: 900px;
+    margin: 2rem auto 0;
+    padding: 1rem;
+    text-align: left;
+}
+
+.shades-topic h4 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #111;
+}
+
+.shades-topic p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 1rem;
 }
