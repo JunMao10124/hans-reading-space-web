@@ -1,4 +1,43 @@
-/* Global reset & font */
+/* ========= Scroll Reveal (Apple-ish) ========= */
+@media (prefers-reduced-motion: no-preference) {
+    .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 600ms ease, transform 600ms ease;
+        will-change: opacity, transform;
+    }
+    .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* 细腻的级联延迟（同组内的孩子依次出现） */
+    .reveal-stagger > * {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 600ms ease, transform 600ms ease;
+        will-change: opacity, transform;
+    }
+    .reveal-stagger.is-visible > * {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 60ms; }
+    .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 120ms; }
+    .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 180ms; }
+    .reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 240ms; }
+    .reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 300ms; }
+}
+
+/* 减少动效用户：直接可见 */
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-stagger > * {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -653,3 +692,142 @@ a {
     line-height: 1.8;
     margin-bottom: 1rem;
 }
+
+.nav-item.dropdown {
+  position: relative;
+}
+
+.nav-item.dropdown > a.no-click {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.nav-item .caret {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.dropdown-menu.open {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  min-width: 260px;
+  background: #fffdf7;              /* 略暖白，和你截图接近 */
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  padding: 0.75rem 0;
+  display: none;
+  z-index: 2000;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* 悬浮/聚焦显示（鼠标和键盘都可用） */
+.nav-item.dropdown:hover .dropdown-menu,
+.nav-item.dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+
+/* 菜单项样式 */
+.dropdown-menu li {
+  list-style: none;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.7rem 1rem;
+  text-decoration: none;
+  color: #222;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background-color: rgba(0,0,0,0.04);
+  color: #000;
+  font-weight: 700; /* 轻微强调 */
+}
+
+/* 让下拉不至于紧贴导航 */
+.navbar { z-index: 1500; }
+
+.memoir-image-container {
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.memoir-image {
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+}
+
+/* ----- Vignette (left image, right text) ----- */
+.memoir-vignette {
+    display: grid;
+    grid-template-columns: 1fr; /* 手机端上下排 */
+    gap: 1.75rem;
+    align-items: start;
+    margin-top: 2.5rem;
+}
+
+@media (min-width: 900px) {
+    .memoir-vignette {
+        grid-template-columns: 0.9fr 1.3fr; /* 图片稍窄，文字更宽 */
+        align-items: center;
+    }
+}
+
+.vignette-image {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    border-radius: 14px;
+    object-fit: cover;            /* 视觉更干净，如需完整显示可改为 contain */
+    box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+.vignette-text {
+    text-align: left;
+    max-width: 56ch;              /* 控制最佳阅读宽度，按需调整或删除 */
+}
+
+.vignette-text h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 0.75rem;
+}
+
+.vignette-text p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.85;            /* 行距更舒适 */
+}
+
+/* ----- Memory Jar full-width vertical image ----- */
+.memoir-memoryjar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+}
+
+.memoryjar-image {
+    width: 50%;
+    max-width: 700px;     /* ✅ 控制竖图最大宽度 */
+    height: auto;
+    border-radius: 16px;
+    object-fit: contain;  /* 保持完整显示 */
+}
+
